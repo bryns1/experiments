@@ -1,3 +1,20 @@
+/*
+  * Usage:
+
+  const timeline1 = timelineFactory()
+  const timeline2 = timelineFactory()
+
+  async onEvent(){
+    const waitFor = timeline1()
+
+    * If onEvent is called again the promise will never resolve. 
+    * (This will still be garbage fetched)
+    const fetch = await waitFor(
+      fetch('google.com')
+    )
+  }
+*/
+
 function timelineFactory(){
   let cancel = false
 
