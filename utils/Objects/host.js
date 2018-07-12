@@ -1,10 +1,10 @@
 // Object util
-function host(obj){
-  const self = {}
-
-  // Safely access properties
-  self.get = (p = '') => {
-    let pointer = obj
+class Host{
+  constructor(obj){
+    this.obj = obj
+  }
+  get (p = '') {
+    let pointer = this.obj
     let paths = p.split('.').filter(Boolean)
     for (const path of paths){
       if (typeof pointer !== 'object') return pointer
@@ -12,20 +12,17 @@ function host(obj){
     }
     return pointer
   }
-
-  // Check if object is empty
-  self.isEmpty = () => {
-    if(Array.isArray(obj)){
-      return !Boolean(obj.length)
+  isEmpty () {
+    if(Array.isArray(this.obj)){
+      return !Boolean(this.obj.length)
     }
-    if(obj && obj !== null && typeof obj === 'object'){
-      return !Boolean(Object.keys(obj).length)
+    if(this.obj && this.obj !== null && typeof this.obj === 'object'){
+      return !Boolean(Object.keys(this.obj).length)
     }
-    return !Boolean(obj)
+    return !Boolean(this.obj)
   }
-
-  self.set = (p, val) => {
-    let pointer = obj
+  set (p, val) {
+    let pointer = this.obj
     let paths = p.split('.')
     let lastPath
 
@@ -44,8 +41,6 @@ function host(obj){
 
     return self
   }
-
-  return self
 }
 
-export default host
+export default Host
