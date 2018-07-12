@@ -1,29 +1,10 @@
 // Object util
 const clone = (...args) => Object.assign({}, ...args)
 
-function addMethods(self, ...methods){
-  const all = {}
-  methods.forEach(method => {
-    Object.assign(all, {
-      [method](p){
-        return Object[method](self.get(p))
-      }
-    })
-  })
-
-  all.keys().forEach(key => {
-    all[key] = all[key].bind(self)
-  })
-
-  Object.assign(self, all)
-}
-
 // Object util
 class Host{
   constructor(obj){
     this.obj = obj
-
-    addMethods(this, 'keys', 'entries')
   }
   get (p = '') {
     let pointer = clone(this.obj)
