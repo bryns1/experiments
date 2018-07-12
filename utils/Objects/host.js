@@ -39,7 +39,7 @@ class Host{
 
     pointer[lastPath] = val
 
-    return self
+    return this
   }
 }
 
