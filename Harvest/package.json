@@ -1,0 +1,33 @@
+{
+  "name": "harvest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "botkit": "^0.6.16",
+    "chalk": "^2.4.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.10",
+    "morgan": "^1.9.0",
+    "node-cron": "^1.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": [
+      "standard",
+      "plugin:react/recommended"
+    ],
+    "rules": {
+      "strict": 0,
+      "no-trailing-spaces": 0
+    }
+  }
+}
