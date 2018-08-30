@@ -1,9 +1,10 @@
-const users = require('../models/user-schema')
+const Users = require('../models/user-schema')
+const cron = require('node-cron')
 
 // Every weekday at 5:45
 cron.schedule('45 17 * * 1-5', async () => {
   // Message users telling them that their timers will be stopped
-  const users = await users.find()
+  const users = await Users.find()
 
   await asyncMap(
     users,
@@ -16,11 +17,9 @@ cron.schedule('45 17 * * 1-5', async () => {
 })
 
 cron.schedule('9 30 * * 1-5', async () => {
-  const users = await users.find()
-
-
+  const users = await Users.find()
 })
 
-function asyncMap(items, fn){
+function asyncMap (items, fn) {
   return Promise.all(items.map(fn))
 }
