@@ -27,7 +27,11 @@ Harvest.cmds({
     description: 'Link your slack and harvest accounts',
 
     async handler (slack) {
-      await slack.send(`Go to ${CONFIG.HOST}/auth/slack?i=${slack.body.user_id}&u=${slack.body.user_name} to link account`)
+      const slackUser = {
+        id: slack.body.user_id,
+        name: slack.body.user_name
+      }
+      await slack.send(`Go to ${CONFIG.HOST}/auth/slack?u=${encode(slackUser)} to link account`)
     }
   },
 
@@ -60,5 +64,9 @@ Router.post('/bot', async (req, res) => {
 
   controller.handleWebhookPayload(req, res, bot)
 })
+
+function encode (object) {
+  return Buffer.from(JSON.stringify(object)).toString('base64')
+}
 
 module.exports = Router

@@ -9,12 +9,17 @@
     "botkit": "^0.6.16",
     "chalk": "^2.4.1",
     "express": "^4.16.3",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
     "mongoose": "^5.2.10",
     "morgan": "^1.9.0",
     "node-cron": "^1.2.1",
+    "query-string": "^6.1.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
     "styled-components": "^3.4.5"
   },
   "devDependencies": {
@@ -22,7 +27,7 @@
   },
   "scripts": {
     "start": "nodemon --ignore public/ app",
-    "build": "cd public && poi watch",
+    "build": "cd public && poi",
     "now-build": "cd public && poi build",
     "now-start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
