@@ -1,3 +1,7 @@
-import { createStore } from 'redux'
+import createStore from './create-store'
 
-const store = createStore(rootReducer)
+const initialState = {}
+
+const store = createStore(initialState)
+
+export default store

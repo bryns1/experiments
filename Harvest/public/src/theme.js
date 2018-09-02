@@ -1,9 +1,15 @@
 export const primary = css`
-  green: #53ad53;
+  primary: #5ae25a;
   border-radius: 8px;
-  blue: blue;
-  bg: white;
-  text: black;
+  bg: black;
+  wrapper-width: 900px;
+  
+  /* Font Colours */
+  page-title: white;
+  page-description: rgb(230, 230, 230);
+  card-title: rgba(230, 230, 230);
+
+  body-copy: white;
 `
 
 export const secondary = css`
@@ -11,12 +17,15 @@ export const secondary = css`
   border-radius: 0px;
   blue: red;
   bg: black;
-  text: white;
-`
+  body-copy: white;
+` 
 
 // Create theme object from css string
 function css (strings, ...rest) {
-  let res = strings.raw[0].split(';')
+  let res = strings.raw[0]
+  // Remove comments
+    .replace(/\/\*.*\*\//g, '')
+    .split(';')
   res = res.map(str => str.trim())
 
   return res.filter(Boolean)

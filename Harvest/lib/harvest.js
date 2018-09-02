@@ -1,17 +1,15 @@
-const db = require('mongoose')
-
-class HarvestAPI{
-  constructor(settings){
+class HarvestAPI {
+  constructor (settings) {
 
   }
 
-  getUsers(){
+  getUsers () {
     return new Promise(resolve => {
       resolve()
     })
   }
 
-  linkUser(slack){
+  linkUser (slack) {
 
   }
 }

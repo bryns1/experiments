@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "@babel/core": "^7.0.0",
     "axios": "^0.18.0",
+    "babel-plugin-import-glob": "^2.0.0",
     "body-parser": "^1.18.3",
     "botkit": "^0.6.16",
     "chalk": "^2.4.1",
@@ -14,13 +16,16 @@
     "mongoose": "^5.2.10",
     "morgan": "^1.9.0",
     "node-cron": "^1.2.1",
+    "polished": "^2.0.3",
     "query-string": "^6.1.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
-    "styled-components": "^3.4.5"
+    "styled-components": "^3.4.5",
+    "styled-system": "^3.0.2",
+    "webpack-import-glob": "^2.0.0"
   },
   "devDependencies": {
     "poi": "^10.2.10"

@@ -31,7 +31,7 @@ Harvest.cmds({
         id: slack.body.user_id,
         name: slack.body.user_name
       }
-      await slack.send(`Go to ${CONFIG.HOST}/auth/slack?u=${encode(slackUser)} to link account`)
+      await slack.send(`Go to ${CONFIG.FRONT_END}/auth/slack?u=${encode(slackUser)} to link account`)
     }
   },
 
