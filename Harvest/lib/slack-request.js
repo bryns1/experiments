@@ -59,8 +59,6 @@ class SlackRequest {
   }
 
   createResponse (strObjorArr, opts = {}) {
-    log(strObjorArr, isArray(strObjorArr))
-
     if (isObject(strObjorArr)) {
       return strObjorArr
     } else if (isString(strObjorArr)) {
@@ -70,7 +68,6 @@ class SlackRequest {
       }
     } else if (isArray(strObjorArr)) {
       const [main, ...rest] = strObjorArr
-      log(main, rest)
       return {
         response_type: opts.response_type || 'ephemeral',
         text: main,

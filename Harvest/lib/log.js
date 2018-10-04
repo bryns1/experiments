@@ -17,7 +17,7 @@ function createLogLevel (lvl) {
   const logger = console[lvl] || console.log
   const formattedLvl = chalkColor(lvl, `[${lvl.toUpperCase()}]`)
   return function (...logs) {
-    if (logs[0].raw) {
+    if (logs[0] && logs[0].raw) {
       const [strings, ...rest] = logs
       // Treat as template literal
       return logger(formattedLvl, ...intertwine(strings, rest))

@@ -39,6 +39,7 @@ const AuthStepElement = styled.div`
   ${width}
   ${space}
   border-radius: ${theme('border-radius')};
+  transition: opacity 0.3s;
 
   ${props => props.disabled && 
   css`

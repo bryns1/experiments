@@ -21,5 +21,3 @@ export const loading = keyframes`
 export const loadingAnimation = css`
   animation: ${loading} 3s infinite linear;
 `
-
-console.log(loadingAnimation)

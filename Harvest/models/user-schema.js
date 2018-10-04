@@ -1,56 +1,110 @@
-const { Schema, model } = require('mongoose')
-const searchObjects = require('../util/objects/')
+const mongoose = require('mongoose')
+const {
+  getTokens,
+  refreshToken,
+  getActiveHarvestEntries
+} = require('../lib/harvest')
 
-const Harvest = require('../app/harvest-api')
-const Slack = require('../app/slack-api')
+const log = global.log
+// const searchObjects = require('../util/objects/search-objects')
 
-const UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
   name: String,
   slackId: String,
+  slackName: String,
   harvestId: String,
+  harvestToken: {
+    access_token: String,
+    refresh_token: String,
+    token_type: String,
+    expires_in: Number,
+    expiredBy: Number
+  }
 })
 
-const statics = {
-  getTimesheets(query){
-    return Harvest.getTimesheets(this.harvestId)
-    .then(timesheets => searchObjects(timesheets, query))
+UserSchema.statics = {
+  findOneOrCreate (condition, doc) {
+    return new Promise((resolve, reject) => {
+      this.findOne(condition, (_err, result) => {
+        if (result) {
+          return resolve(result)
+        }
+
+        log('About to create')
+        this.create(doc, (err, result) => {
+          if (err) return reject(err)
+          return resolve(result)
+        })
+      })
+    })
+  },
+  fromSlack (user) {
+    return new Promise((resolve, reject) => {  
+      try {
+        log.warning('Waiting for user')
+        this.findOneOrCreate({ slackId: user.slackId }, user).then(user => {
+          resolve(user)
+        })
+      } catch (err) {
+        reject(err)
+      }
+    })
   }
 }
 
-const methods = {
-  sendMessage(msg){
-    return Slack.sendMessage(this.slackId, msg)
+UserSchema.methods = {
+  async getActiveHarvestEntries () {
+    const tokens = await this.getHarvestTokens()
+    return getActiveHarvestEntries(tokens)
+  },
+  async updateHarvestTokens (tokens) {
+    this.harvestToken = this.harvestToken || {}
+    this.harvestToken = {
+      ...this.harvestToken, 
+      ...tokens,
+      now: new Date().getTime(),
+      expiredBy: new Date().getTime() + tokens.expires_in
+    }
+
+    // this.save() is promise like
+    return this.save()
+  },
+  async getHarvestTokens (code) {
+    if (this.harvestToken) {
+      if (this.tokensAreStale(this.harvestToken)) {
+        log('Tokens are stale')
+        // Refresh token
+        const newTokens = await refreshToken(this.harvestToken)
+        return this.updateHarvestTokens(newTokens)
+      } else {
+        return new Promise(resolve => resolve(this.harvestToken))
+      }
+    } else if (code) {
+      const tokens = await getTokens(code)
+
+      return this.updateHarvestTokens(tokens)
+    }
+  },
+  tokensAreStale (token) {
+    return new Date().getTime() > token.expiredBy
   }
 }
 
-applyToSchema(
-  UserSchema,
-  { statics, methods }
-)
+const UserModel = mongoose.model('User', UserSchema)
 
-
-module.exports = model('User', UserSchema)
-
-function applyToSchema( schema, object = {statics: {}, methods: {}} ){
-
-  const m = mustBeObject(methods)
-  const s = mustBeObject(statics)
-
-  Object.keys(object)
-  .forEach(key => assign(schema[key], object[key]))
-  
+async function test () {
+  const user = UserModel.findById('5b8c88e32a1b5f0cb864a70c')
+  log(user)
+  // log(`About to get harvest entries for ${user} I think`)
+  // user.getActiveHarvestEntries()
+  //   .then(response => {
+  //     log('GOT RESPONSE', response.data)
+  //   })
+  //   .catch(err => {
+  //     log('GOT ERROR', err)
+  //   })
 }
 
-function assign(item, obj){
-  Object.keys(obj).forEach(key => {
-    item[key] = obj[key] 
-  })
-}
+// test()
 
-function mustBeObject(obj){
-  return isObject(obj) ? obj : {}
-}
-
-function isObject(obj){
-  return typeof obj === 'object' && obj !== null
-}
+module.exports = UserModel

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {width, space, color} from 'styled-system'
 
-const SectionEl = styled.section`
+const ComponentEl = styled.section`
   ${space}
   ${width}
   ${color}
@@ -11,27 +11,27 @@ const SectionEl = styled.section`
   position: relative;
 `
 
-function Section (props) {
-  return <SectionEl {...props}/>
+function Component (props) {
+  return <ComponentEl {...props}/>
 }
 
-Section.Header = styled.div`
+Component.Header = styled.div`
   position: relative;
   ${space}
 `
 
-Section.Body = styled.main`
+Component.Body = styled.main`
   ${space}
   position: relative;
   flex: 1;
 `
 
-Section.Footer = styled.div`
+Component.Footer = styled.div`
   ${space}
 `
 
-Section.Actions = styled.div`
+Component.Actions = styled.div`
   display: flex;
 `
 
-export default Section
+export default Component

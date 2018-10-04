@@ -18,7 +18,10 @@ const log = global.log
 
 app.use(express.static(path.join(__dirname, './public/dist')))
 
+// These never get back to the browser :(
 app.use('/api/slack', require('./app/api/slack-router'))
+app.use('/api/auth', require('./app/api/auth-router'))
+app.use('/api/harvest', require('./app/api/harvest-router'))
 
 app.get('*', function (request, response) {
   response.sendFile(path.resolve(__dirname, './public/dist/index.html'))
@@ -26,7 +29,13 @@ app.get('*', function (request, response) {
 
 async function main () {
   // Connect to mongodb
-  await connectToDB(`mongodb://${CONFIG.MONGO.USER}:${CONFIG.MONGO.PASS}@ds137812.mlab.com:37812/blksh`)
+  const URL = `mongodb://ds137812.mlab.com:37812/blksh`
+  await connectToDB(URL, {
+    auth: {
+      user: CONFIG.MONGO.USER,
+      password: CONFIG.MONGO.PASS
+    }
+  })
 
   // The server instance
   const listener = await startApp(app, 3000)
@@ -38,5 +47,5 @@ async function main () {
 }
 
 main().catch(_ => {
-  log.error('MAIN')
+  log.error('MAIN', _)
 })

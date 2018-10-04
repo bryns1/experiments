@@ -61,7 +61,6 @@ class SlackHandler {
   }
 
   handle (slackReq) {
-    log(slackReq.toJSON(), slackReq instanceof SlackRequest)
     if (!(slackReq instanceof SlackRequest)) {
       throw new Error(`SlackHandler can only handle instances of SlackRequest`)
     }

@@ -1,8 +1,9 @@
 import styled, {css} from 'styled-components'
 import theme from '../../../util/elements/from-theme'
-import {space} from 'styled-system'
+import {space, width} from 'styled-system'
 import {rgba as _rgba} from 'polished'
 import {loadingAnimation} from './keyframes'
+import whenProp from '../../../util/elements/when-prop'
 
 export default styled.button`
   min-height: 40px;
@@ -20,8 +21,9 @@ export default styled.button`
   outline: none;
   font-weight: bold;
   border-radius: ${theme('border-radius')};
-  box-shadow: 0px 10px 25px ${rgba(theme('primary'), 0.2)};
+  box-shadow: 0px 4px 16px ${rgba(theme('primary'), 0.2)};
   ${space}
+  ${width}
   ${props => props.flex ? `flex: ${props.flex};` : ''}
 
   &:disabled{
@@ -31,12 +33,12 @@ export default styled.button`
 
   &:hover{
     transform: translateY(-2px);
-    box-shadow: 0px 10px 25px ${rgba(theme('primary'), 0.3)};
+    box-shadow: 0px 4px 16px ${rgba(theme('primary'), 0.3)};
 
     ${whenProp({
     'loading': css`
       transform: none;
-      box-shadow: 0px 10px 25px ${rgba(theme('primary'), 0.2)};
+      box-shadow: 0px 4px 16px ${rgba(theme('primary'), 0.2)};
     `
   })}
   }
@@ -44,7 +46,7 @@ export default styled.button`
   &:active{
     transition: transform 0.1s;
     transform: translateY(0px);
-    box-shadow: 0px 10px 25px ${rgba(theme('primary'), 0.1)};
+    box-shadow: 0px 4px 16px ${rgba(theme('primary'), 0.1)};
   }
 
   ${whenProp({
@@ -62,18 +64,6 @@ export default styled.button`
 
   
 `
-
-function whenProp (obj) {
-  return props => Object.keys(obj).reduce((arr, key) => {
-    console.log(key, 'in props')
-    if (props[key]) {
-      arr.push(obj[key]) 
-      return arr
-    }
-    return arr
-  }, [])
-}
-
 function rgba (fn, ...args) {
   return props => {
     if (typeof fn === 'function') {

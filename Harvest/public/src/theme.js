@@ -1,9 +1,8 @@
 export const primary = css`
   primary: #5ae25a;
   border-radius: 8px;
-  bg: black;
+  bg: linear-gradient(70deg, black, rgb(20, 25, 23));
   wrapper-width: 900px;
-  
   /* Font Colours */
   page-title: white;
   page-description: rgb(230, 230, 230);

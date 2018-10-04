@@ -1,0 +1,25 @@
+{
+  "NAME": "FED",
+  "SLACK": {
+    "clientId": "398223029601.425448178071",
+    "clientSecret": "2cbfb660aed4de6811c29c5bc03eec23"
+  },
+  "HOST": "http://localhost:3000",
+  "FRONT_END": "http://localhost:4000",
+  "MONGO": {
+    "USER": "admin",
+    "PASS": "P?Kegg@9j@2]iZVAjJsbqpi2"
+  },
+  "HARVEST": {
+    "clientId": "D2mu1i84b7oBuEDg4rTyvjT3",
+    "clientSecret": "7YnWRCFYuPOUfIRv86HtfHSn5jgK6V1RYJf4jDP23sw3-FZdVR__HGxHZx12Do8D-Fp8e5DdRPtk5_XTnSPxzw"
+  },
+  "NGROK": {
+    "url": "https://4d497a02.ngrok.io",
+    "created": 1536102798368
+  },
+  "SITES_TO_UPDATE": [
+    "https://api.slack.com/apps/ACHD65823/slash-commands?",
+    "https://id.getharvest.com/oauth2/clients/1005"
+  ]
+}

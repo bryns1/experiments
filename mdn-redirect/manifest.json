@@ -1,0 +1,32 @@
+  
+{
+  "name": "MDN Redirect",
+  "author": "",
+  "version": "1.0",
+  "description": "Offer links to MDN on w3schools pages",
+  "permissions": [
+    "*://www.w3schools.com/*",
+    "*://developer.mozilla.org/*",
+    "tabs"
+  ], 
+  "browser_action": {
+    "default_icon": {
+      "20": "images/logo20active.png",
+      "40": "images/logo40active.png"
+    },
+    "default_title": "MDN Redirect",
+    "default_popup": "index.html"
+  },
+  "content_scripts": [{
+    "matches": [
+      "*://www.w3schools.com/*"
+    ],
+    "js": ["js/content.js"],
+    "run_at": "document_end"
+  }],
+  "web_accessible_resources" : ["/css/content.css"],
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": true
+  }
+}

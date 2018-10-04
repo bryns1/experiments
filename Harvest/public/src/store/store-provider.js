@@ -11,10 +11,8 @@ export default class StoreProvider extends React.Component {
     }
 
     this.dispose = this.props.store.subscribe(({state}) => {
-      console.log('state, store', state, store)
       this.setState({
-        state,
-        store
+        state
       })
     })
   }
@@ -22,7 +20,6 @@ export default class StoreProvider extends React.Component {
     this.dispose()
   }
   render () {
-    console.log(this.state)
     return (
       <Provider value={this.state}>
         {this.props.children}

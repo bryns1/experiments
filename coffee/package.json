@@ -1,0 +1,39 @@
+{
+  "name": "coffee",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "poi"
+  },
+  "dependencies": {
+    "@types/react": "^16.3.17",
+    "animejs": "^2.2.0",
+    "babel": "^6.23.0",
+    "firebase": "^5.0.3",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.3.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-flexbox-grid": "^2.1.2",
+    "react-hammerjs": "^1.0.1",
+    "react-motion": "^0.5.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-transition-group": "^2.3.1",
+    "redux": "^4.0.0",
+    "styled-components": "^3.2.6",
+    "webpack": "^4.11.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.47",
+    "babel-preset-poi": "^10.0.1",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "react-hot-loader": "^4.2.0",
+    "sass-loader": "^7.0.1",
+    "vue-style-loader": "^4.1.0"
+  }
+}

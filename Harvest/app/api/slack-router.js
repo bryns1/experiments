@@ -50,8 +50,6 @@ Router.post('/', async (req, res) => {
 
 Router.post('/bot', async (req, res) => {
   const slackReq = new SlackRequest(req, res)
-  
-  log('Pre handle', slackReq.toJSON())
   Harvest.handle(slackReq)
 })
 
