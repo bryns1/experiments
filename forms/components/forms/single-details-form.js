@@ -251,7 +251,7 @@ class SingleDetailsForm extends FormElements{
                   ]}/>
                   <hr/>
                   <div>
-                    <Select label="Verified from" name="certified_copy" options={[
+                    <Select label="Verified from a" name="certified_copy" options={[
                       'a:Certified Copy'
                     ]}/>
                     <SelectState label="State" name="select_state"/>
