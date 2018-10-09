@@ -1,29 +1,10 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
 
-class Form {
-  constructor(obj){
-    this._mixObject(obj)
-  }
+// Styles
+import './styles/normalize.css'
+import './styles/styles.scss'
 
-  _mixObject(obj){
-    const keys = Object.keys(obj)
-
-    keys.forEach(k => this[k] = obj[k])
-  }
-
-  setState(obj){
-    this._mixObject(obj)
-    this.update()
-  }
-
-  listen(fn) {
-    
-  }
-}
-
-const App = () => {
-  return <div>hello</div>
-}
+// App
+import App from './app'
 
 ReactDOM.render(<App/>, document.getElementById('app'))

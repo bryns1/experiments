@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+body{
+  background: #efefef;
+}
+
+input, select {
+  max-width: 100%;
+}
+
+input[type="text"]{
+  display: block;
+}
