@@ -10,11 +10,6 @@ import {
 import { Page, Inner, Header, Sidebar, Nav } from './components/page'
 import { FormState } from './components/form-elements'
 
-// Views
-import SingleDetailsView from './views/single-details-view'
-import SingleTrusteeView from './views/single-trustee-view'
-import StyleIndex from './views/style-index'
-
 import {routerConfig} from './router.config'
 
 class App extends React.Component{

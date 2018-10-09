@@ -1,7 +1,7 @@
 import React from 'react'
 import { Content, SidebarLinks } from '../components/page';
 
-import {routerConfig} from '../router.config'
+import { routerConfig } from '../router.config'
 import { PageTitle } from '../components/styles/font-styles';
 
 class SiteIndex extends React.Component{

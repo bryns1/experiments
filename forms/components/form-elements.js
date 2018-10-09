@@ -8,6 +8,7 @@ import LocationInput from './input-location/input-location'
 import {Row, Col} from 'react-grid-system'
 import CountryInput from './input-country/input-country';
 import TaxCountries from './tax-countries'
+import FileInput from './input-file/input-file'
 
 import {FormLabel, FaintLabel} from './styles/font-styles'
 
@@ -31,6 +32,7 @@ export default class FormElements extends  React.Component{
       })
     })
   }
+  FileInput = props => <FileInput {...props} name={props.name} onChange={this.update}/>
   TaxCountries = props => <TaxCountries controller={this} {...props}/>
   SelectState = props => {
     const states = ['NSW', 'ACT', 'WA', 'SA', 'TAS', 'NT', 'QLD']

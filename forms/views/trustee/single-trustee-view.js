@@ -1,11 +1,11 @@
 import React from 'react'
 
-import FakeLink from '../components/fake-link'
-import { Sidebar, SidebarLinks } from '../components/page';
+import FakeLink from '../../components/fake-link'
+import { Sidebar, SidebarLinks } from '../../components/page';
 
-import { PageTitle } from '../components/styles/font-styles';
+import { PageTitle } from '../../components/styles/font-styles';
 
-import {trusteeRoutes} from '../router.config'
+import {trusteeRoutes} from '../../router.config'
 
 class SingleTrusteeView extends React.Component{
   render(){

@@ -4,7 +4,12 @@ const preventDefault = e => {
 
 const FakeLink = props => {
   return (
-    <a href="#" onClick={preventDefault}><div>{props.children}</div></a>
+    <a href="#" onClick={e => {
+      preventDefault(e)
+      if (props.onClick) {
+        props.onClick(e)
+      }
+    }}><div>{props.children}</div></a>
   )
 }
 

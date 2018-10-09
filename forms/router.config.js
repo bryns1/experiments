@@ -1,5 +1,9 @@
 import SingleDetailsView from './views/single-details-view'
-import SingleTrusteeView from './views/single-trustee-view'
+
+// Trustees
+import SingleTrusteeView from './views/trustee/single-trustee-view'
+import SingleTrusteeDocumentsView from './views/trustee/single-trustee-documents-view'
+
 import SiteIndex from './views/site-index';
 
 function route(path, component, name = '', description = '', options = {}) {
@@ -46,7 +50,7 @@ export const trusteeRoutes = [
   ),
   route(
     '/trustee-documents',
-    props => <p>Documents</p>,
+    props => <SingleTrusteeDocumentsView title="Documentation" type="Trustee"/>,
     'Documents',
     'Submit documentation'
   ),
